@@ -1,9 +1,10 @@
 package com.demojava.JDBC;
 
+
 import java.sql.*;
 
 
-public class App 
+public class fetch 
 {
     private static boolean b;
 
@@ -13,9 +14,19 @@ public class App
     		Class.forName("com.mysql.cj.jdbc.Driver");
       
     		Connection c1=DriverManager.getConnection("jdbc:mysql://localhost:3306/student","root","rootpassword");
-        	Statement stmt=c1.createStatement();
+        	Statement st=c1.createStatement();
         	
-        	b = stmt.execute("create table info1 (id int,name varchar(22) )");
+        	ResultSet rs= st.executeQuery("select name from info");
+//        	
+        	rs.next();
+        	String name=rs.getString(1);
+        	System.out.println(name);
+        	
+        	
+        	
+        
+        	
+        	st.close();
         	
     		
     }
